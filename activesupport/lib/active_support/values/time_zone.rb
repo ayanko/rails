@@ -371,7 +371,7 @@ module ActiveSupport
     def iso8601(str)
       parts = Date._iso8601(str)
 
-      raise ArgumentError, "invalid date" if parts.empty?
+      raise ArgumentError, "invalid date" unless parts.key?(:year)
 
       time = Time.new(
         parts.fetch(:year),
